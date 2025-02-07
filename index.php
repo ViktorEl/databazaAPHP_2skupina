@@ -19,17 +19,17 @@
         if(isset($_POST["tlacidlo"])) {
             if(isset($_POST["meno"]) && isset($_POST["heslo"])) {
                 $db_server = "localhost";
-                $db_meno = "root";
+                $db_meno = "roo";
                 $db_heslo = "vertrigo";
                 $db_nazov = "data";
 
                 $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
 
-                if($pripojenie) {
-                    echo "ste pripojený";
+                if(mysqli_connect_errno()) {        // mozeme nahradiť aj mysqli_connect_error()
+                    die("chyba pripojenia".mysqli_connect_errno());
                 }
                 else {
-                    die("chyba pripojenia");
+                    echo "ste pripojený";
                 }
 
 
