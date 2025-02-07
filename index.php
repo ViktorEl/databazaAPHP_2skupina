@@ -14,22 +14,29 @@
         <input type="submit" name="tlacidlo" value="Odoslat">
     </form>
 
+
     <?php
         if(isset($_POST["tlacidlo"])) {
             if(isset($_POST["meno"]) && isset($_POST["heslo"])) {
-                $meno = $_POST["meno"];
-                $heslo = $_POST["heslo"];
+                $db_server = "localhost";
+                $db_meno = "root";
+                $db_heslo = "vertrigo";
+                $db_nazov = "data";
 
-                echo "Vaše meno je ".$meno." a vaše heslo je: ".$heslo;
+                $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
 
-            }
+                if($pripojenie) {
+                    echo "ste pripojený";
+                }
+                else {
+                    die("chyba pripojenia");
+                }
+
+
         }
-
-
-
-
+    }
+     
     ?>
-
 
 
 </body>
