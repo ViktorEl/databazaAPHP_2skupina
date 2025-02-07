@@ -14,6 +14,23 @@
         <input type="submit" name="tlacidlo" value="Odoslat">
     </form>
 
+    <?php
+        if(isset($_POST["tlacidlo"])) {
+            if(isset($_POST["meno"]) && isset($_POST["heslo"])) {
+                $meno = $_POST["meno"];
+                $heslo = $_POST["heslo"];
+
+                echo "Vaše meno je ".$meno." a vaše heslo je: ".$heslo;
+
+            }
+        }
+
+
+
+
+    ?>
+
+
 
 </body>
 </html>
