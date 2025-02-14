@@ -16,15 +16,12 @@
 
 
     <?php
+        require_once "funkcie.php";
+
         if(isset($_POST["tlacidlo"])) {
             if(isset($_POST["meno"]) && isset($_POST["heslo"])) {
-                $db_server = "localhost";
-                $db_meno = "root";
-                $db_heslo = "vertrigo";
-                $db_nazov = "data";
 
-                $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
-
+                pripojenie("localhost", "root", "vertrigo", "data");
                 $meno = $_POST["meno"];
                 $heslo = $_POST["heslo"];
 
