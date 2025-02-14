@@ -21,7 +21,14 @@
         if(isset($_POST["tlacidlo"])) {
             if(isset($_POST["meno"]) && isset($_POST["heslo"])) {
 
-                pripojenie("localhost", "root", "vertrigo", "data");
+                $pripojenie = pripojenieDoDb("localhost", "root", "vertrigo","data");
+                if($pripojenie) {
+                    echo "ste pripojený";
+                }
+                else {
+                    die("chyba pripojenia");
+                }
+                
                 $meno = $_POST["meno"];
                 $heslo = $_POST["heslo"];
 
@@ -35,8 +42,9 @@
                 else {
                     die("chyba odosielania");
                 }
-
+                   
         }
+                
     }
      
     ?>
