@@ -19,19 +19,25 @@
         if(isset($_POST["tlacidlo"])) {
             if(isset($_POST["meno"]) && isset($_POST["heslo"])) {
                 $db_server = "localhost";
-                $db_meno = "roo";
+                $db_meno = "root";
                 $db_heslo = "vertrigo";
                 $db_nazov = "data";
 
                 $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
 
-                if(mysqli_connect_errno()) {        // mozeme nahradiť aj mysqli_connect_error()
-                    die("chyba pripojenia".mysqli_connect_errno());
+                $meno = $_POST["meno"];
+                $heslo = $_POST["heslo"];
+
+                $dotaz = "INSERT INTO pouzivatelia (meno, heslo)
+                VALUES ('$meno', '$heslo')";
+
+                $odoslanie = mysqli_query($pripojenie, $dotaz);
+                if($odoslanie) {
+                    echo "udaje odoslane";
                 }
                 else {
-                    echo "ste pripojený";
+                    die("chyba odosielania");
                 }
-
 
         }
     }
