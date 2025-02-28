@@ -21,14 +21,8 @@
         if(isset($_POST["tlacidlo"])) {
             if(isset($_POST["meno"]) && isset($_POST["heslo"])) {
 
-                $pripojenie = pripojenieDoDb("localhost", "root", "vertrigo","data");
-                if($pripojenie) {
-                    echo "ste pripojený";
-                }
-                else {
-                    die("chyba pripojenia");
-                }
-                
+                pripojenieDoDb("localhost", "root", "vertrigo","data");
+
                 $meno = $_POST["meno"];
                 $heslo = $_POST["heslo"];
 
