@@ -64,6 +64,7 @@
 
                 $farba = $_POST["farba"];
                 $vek = $_POST["vek"];
+                
 
                 $db_server = "localhost";
                 $db_meno = "root";
@@ -72,11 +73,17 @@
 
                 $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
 
-                if(!$pripojenie) {
-                    die("chyba pripojenia".mysqli_connect_error());
+                mysqli_set_charset($pripojenie, 'utf8');    // musime nastavit aby odosielalo udaje do databazy aj s diakritikou
+
+                $dotaz = "INSERT INTO dotaznik (predmet, den, farba, vek)
+                VALUES ('$predmet', '$den', '$farba', '$vek')";
+
+                $odoslanie = mysqli_query($pripojenie, $dotaz);
+                if(!$odoslanie) {
+                    die("chyba odoslania");
                 }
                 else {
-                    echo "ste pripojeny";
+                    echo ("dakujeme za vyplnenie dotaznika");
                 }
 
 
