@@ -65,7 +65,20 @@
                 $farba = $_POST["farba"];
                 $vek = $_POST["vek"];
 
-                
+                $db_server = "localhost";
+                $db_meno = "root";
+                $db_heslo = "vertrigo";
+                $db_nazov = "informacie";
+
+                $pripojenie = mysqli_connect($db_server, $db_meno, $db_heslo, $db_nazov);
+
+                if(!$pripojenie) {
+                    die("chyba pripojenia".mysqli_connect_error());
+                }
+                else {
+                    echo "ste pripojeny";
+                }
+
 
 
 
