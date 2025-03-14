@@ -1,0 +1,14 @@
+CREATE TABLE tovar 
+(
+id		INT AUTO_INCREMENT PRIMARY KEY,
+nazov		VARCHAR(50) NOT NULL,
+cena		FLOAT NOT NULL,
+mnozstvo	INT NOT NULL,
+spotreba	DATE
+);
+
+INSERT INTO tovar (nazov, cena, mnozstvo, spotreba)
+VALUES
+('Horalka', 0.70, 50, '2026-11-5'),
+('Bageta', 2.60, 20, '2025-03-18'),
+('Chipsy', 2.40, 100, '2026-10-5')
