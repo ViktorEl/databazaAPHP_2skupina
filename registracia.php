@@ -24,8 +24,20 @@
 
                 $connection = mysqli_connect($db_server, $db_login, $db_password, $db_name);
                 mysqli_set_charset($connection, "utf8");
+
+                $sqlQuery = "SELECT * FROM persons";
+                $data = mysqli_query($connection, $sqlQuery);
+
                 $login = $_POST["login"];
                 $login = mysqli_real_escape_string($connection, $login); // ochrana proti SQL injection
+
+                while($row = mysqli_fetch_assoc($data)) {
+                    $checkLogin = $row["userName"];
+                    if($login == $checkLogin) {
+                        die("Používatel s rovnakym menom už existuje");
+                    }
+                }
+
                 $password = $_POST["pass"];
                 $password = mysqli_real_escape_string($connection, $password);
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
