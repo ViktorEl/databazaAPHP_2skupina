@@ -25,18 +25,26 @@
                 $connection = mysqli_connect($db_server, $db_login, $db_password, $db_name);
                 mysqli_set_charset($connection, "utf8");
 
-                $sqlQuery = "SELECT * FROM persons";
-                $data = mysqli_query($connection, $sqlQuery);
+                
+                
+                //$data = mysqli_query($connection, $sqlQuery);
 
                 $login = $_POST["login"];
                 $login = mysqli_real_escape_string($connection, $login); // ochrana proti SQL injection
+                $sqlQuery = "SELECT * FROM persons WHERE userName='$login'";
+                $sqlResult = mysqli_query($connection, $sqlQuery);
+                $numberRow = mysqli_num_rows($sqlResult);
+                if($numberRow > 0) {
+                    die("Používatel s rovnakym menom uz existuje");
+                }
 
+                /*
                 while($row = mysqli_fetch_assoc($data)) {
                     $checkLogin = $row["userName"];
                     if($login == $checkLogin) {
                         die("Používatel s rovnakym menom už existuje");
                     }
-                }
+                } */
 
                 $password = $_POST["pass"];
                 $password = mysqli_real_escape_string($connection, $password);
