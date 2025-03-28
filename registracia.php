@@ -28,8 +28,9 @@
                 $login = mysqli_real_escape_string($connection, $login); // ochrana proti SQL injection
                 $password = $_POST["pass"];
                 $password = mysqli_real_escape_string($connection, $password);
+                $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-                $query = "INSERT INTO persons (userName, passwd) VALUES ('$login', '$password')";
+                $query = "INSERT INTO persons (userName, passwd) VALUES ('$login', '$passwordHash')";
                 $result = mysqli_query($connection, $query);
                 if(!$result) {
                     die("chyba registracie");
