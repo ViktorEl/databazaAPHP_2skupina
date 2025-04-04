@@ -38,6 +38,7 @@
                     die("Používatel s rovnakym menom uz existuje");
                 }
 
+
                 /*
                 while($row = mysqli_fetch_assoc($data)) {
                     $checkLogin = $row["userName"];
